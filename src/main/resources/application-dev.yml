@@ -1,0 +1,123 @@
+server:
+  port: 8010
+
+spring:
+#  数据库连接配置
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://47.95.4.68:3306/willtest?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#    username: root
+#    password: will123
+#    type: org.apache.commons.dbcp2.BasicDataSource
+#    dbcp2:
+#      max-wait-millis: 60000
+#      min-idle: 20
+#      initial-size: 2
+#      validation-query: SELECT 1
+#      connection-properties: characterEncoding=utf8
+#      test-while-idle: true
+#      test-on-borrow: true
+#      test-on-return: true
+#  数据库连接多数据源配置
+  datasource:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.95.4.68:3306/willtest?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: will123
+      type: org.apache.commons.dbcp2.BasicDataSource
+      dbcp2:
+        max-wait-millis: 60000
+        min-idle: 20
+        initial-size: 2
+        validation-query: SELECT 1
+        connection-properties: characterEncoding=utf8
+        test-while-idle: true
+        test-on-borrow: true
+        test-on-return: true
+    slave:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: 123456
+      type: org.apache.commons.dbcp2.BasicDataSource
+      dbcp2:
+        max-wait-millis: 60000
+        min-idle: 20
+        initial-size: 2
+        validation-query: SELECT 1
+        connection-properties: characterEncoding=utf8
+        test-while-idle: true
+        test-on-borrow: true
+        test-on-return: true
+#   redis配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: willRedis
+    jedis:
+      max-active: 10
+      max-wait: 1000
+      max-idle: 5
+    timeout: 1000
+# ehcache缓存
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
+#  邮件配置
+  mail:
+    host: smtp.163.com
+    username: Will960428@163.com
+    password: A123456
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+#  rabbitMQ配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:sql/**/*-sql.xml
+
+token:
+  expire: 3600000
+  key: 123456
+
+mail:
+  from: Will960428@163.com
+  fromName: Will
+
+rabbit:
+  direct:
+    queue: spring.queue.direct
+    exchange: spring.exchange.direct
+    key: spring.key.direct
+  common:
+    queue: spring.queue.common
+    queue.pattern: spring.key.*
+  fanout:
+    exchange: spring.exchange.fanout
+  topic:
+    exchange: spring.exchange.topic
+    key: spring.key.topic
+
+schedule:
+  task:
+    test: 0/2 * * * * ?
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
