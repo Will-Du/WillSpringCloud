@@ -4,8 +4,35 @@ server:
 spring:
   application:
     name: service-demo
+  # 数据库连接配置
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.95.4.68:3306/willtest?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: will123
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-wait-millis: 60000
+      min-idle: 20
+      initial-size: 2
+      validation-query: SELECT 1
+      connection-properties: characterEncoding=utf8
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: true
 
 erueka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/erueka/
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:sql/**/*-sql.xml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

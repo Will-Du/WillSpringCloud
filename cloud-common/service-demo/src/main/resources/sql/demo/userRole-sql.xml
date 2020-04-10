@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wcd.servicedemo.demo.dao.UserRoleDao">
+    <parameterMap id="parameterMap" type="com.wcd.servicedemo.demo.entity.UserRoleEntity"></parameterMap>
+    <resultMap id="resultMap" type="com.wcd.servicedemo.demo.entity.UserRoleEntity">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="role" column="role"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+
+    <select id="findByPage" resultMap="resultMap" parameterMap="parameterMap">
+        select id,username,role,phone from user_role
+        <where>
+            <if test="username != null and username!= ''">
+                and username = #{username}
+            </if>
+            <if test="role != null and role != ''">
+                and role = #{role}
+            </if>
+        </where>
+    </select>
+</mapper>
