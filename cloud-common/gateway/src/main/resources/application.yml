@@ -1,0 +1,34 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: gateway
+  main:
+#    当遇到同样名字的时候，是否允许覆盖注册
+    allow-bean-definition-overriding: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+#          是否和服务注册与发现组件结合，设置为true后可以直接使用应用名称调用服务
+          enabled: true
+          lower-case-service-id: true
+      routes:
+#        路由标识(id:标识，具有唯一性)
+        - id: service-demo
+#          目标服务地址(uri:地址，请求转发后的地址)
+          uri: localhost:8763
+          predicates:
+#          端口号后面路径名字，加上/**,可以请求到根路径下的所有api
+            - Path=/**
+#          filters:
+#            设置为0，是不过滤根路径，如果想过滤掉的话，直接设置为1
+#            - StripPrefix=0
+#            当前网关服务对应的过滤器是LoginGatewayFilterFactory
+#            - Login=true
+
+erueka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/erueka/
