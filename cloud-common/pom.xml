@@ -13,14 +13,24 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>cloud-common</name>
     <description>Demo project for Spring Boot</description>
+    <!--
+        注意最后打包需要将jar修改为pom
+        <packaging>jar</packaging>
+     -->
+    <packaging>pom</packaging>
 
     <modules>
         <module>eureka</module>
         <module>service-demo</module>
+        <module>service-common</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <lombok.version>1.18.6</lombok.version>
+
     </properties>
 
     <dependencies>
@@ -50,7 +60,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
         </dependency>
 
         <dependency>

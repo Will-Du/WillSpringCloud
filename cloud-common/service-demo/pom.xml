@@ -6,7 +6,6 @@
         <groupId>com.wcd</groupId>
         <artifactId>cloud-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wcd</groupId>
     <artifactId>service-demo</artifactId>
