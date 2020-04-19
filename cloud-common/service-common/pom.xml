@@ -41,15 +41,23 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.13</version>
         </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
