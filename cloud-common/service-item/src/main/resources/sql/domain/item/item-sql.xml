@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wcd.serviceitem.domain.item.dao.ItemDao">
+    <parameterMap id="parameterMap" type="com.wcd.serviceitem.domain.item.entity.Item"></parameterMap>
+    <resultMap id="resultMap" type="com.wcd.serviceitem.domain.item.entity.Item">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="pic" column="pic"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price"/>
+    </resultMap>
+
+    <sql id="queryColumn">
+        id,title,pic,description,price
+    </sql>
+
+    <select id="find" parameterMap="parameterMap" resultMap="resultMap" >
+        select
+            <include refid="queryColumn"></include>
+        from
+            item
+    </select>
+
+    <select id="getById" parameterType="java.lang.String" resultMap="resultMap">
+        select
+            <include refid="queryColumn"></include>
+        from
+            item
+        where
+            id = {item}
+    </select>
+</mapper>
