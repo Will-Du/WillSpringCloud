@@ -31,7 +31,6 @@ public class ItemController implements ItemApi {
     public JsonModel getById(Item item) {
 
         JsonModel jsonModel = new JsonModel();
-        System.err.println(item.getId());
         jsonModel.setData(itemService.getById(item.getId()));
 
         return jsonModel;
