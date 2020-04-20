@@ -29,5 +29,5 @@ public interface ItemApi {
 
     @ApiOperation("根据id查询")
     @PostMapping("/getById")
-    public JsonModel getById(@RequestBody String id);
+    public JsonModel getById(@RequestBody Item item);
 }

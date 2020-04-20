@@ -28,10 +28,11 @@ public class ItemController implements ItemApi {
     }
 
     @Override
-    public JsonModel getById(String id) {
+    public JsonModel getById(Item item) {
 
         JsonModel jsonModel = new JsonModel();
-        jsonModel.setData(itemService.getById(id));
+        System.err.println(item.getId());
+        jsonModel.setData(itemService.getById(item.getId()));
 
         return jsonModel;
     }

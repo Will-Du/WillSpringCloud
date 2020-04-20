@@ -27,6 +27,6 @@
         from
             item
         where
-            id = {item}
+            id = #{value}
     </select>
 </mapper>
