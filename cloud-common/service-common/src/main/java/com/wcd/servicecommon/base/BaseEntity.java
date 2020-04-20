@@ -21,7 +21,7 @@ public class BaseEntity {
     /** 创建人id **/
     private String createdUser;
     /** 创建时间 **/
-    private Date createDate;
+    private Date createdDate;
     /** 更新人 **/
     private String updateUser;
     /** 更新时间 **/

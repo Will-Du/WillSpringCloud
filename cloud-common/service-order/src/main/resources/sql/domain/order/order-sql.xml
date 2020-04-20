@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wcd.serviceorder.domain.order.dao.OrderDao">
+    <parameterMap id="parameterMap" type="com.wcd.serviceorder.domain.order.entity.Order"></parameterMap>
+    <resultMap id="resultMap" type="com.wcd.serviceorder.domain.order.entity.Order">
+        <result property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="createdDate" column="created_date" />
+        <result property="createdUser" column="created_user" />
+        <result property="updateDate" column="update_date" />
+        <result property="updateUser" column="update_user" />
+        <collection property="orderDetails" column="order_id" select="findDetailByOrderId"></collection>
+    </resultMap>
+
+    <resultMap id="orderDetailMap" type="com.wcd.serviceorder.domain.order.entity.OrderDetail">
+        <result property="orderId" column="order_id" />
+        <result property="detailId" column="detail_id" />
+        <result property="itemId" column="item_id" />
+    </resultMap>
+
+    <select id="getById" parameterType="java.lang.String" resultMap="resultMap">
+        select
+            order_id,user_id,created_date,created_user,update_date,update_user
+        from
+            orders
+        where
+            order_id = #{value}
+    </select>
+
+    <select id="findDetailByOrderId" parameterType="java.lang.String" resultMap="orderDetailMap">
+        select
+            order_id,detail_id,item_id
+        from
+            order_detail
+        where
+            order_id = #{order_id}
+    </select>
+</mapper>
