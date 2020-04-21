@@ -30,4 +30,8 @@ public interface ItemApi {
     @ApiOperation("根据id查询")
     @PostMapping("/getById")
     public JsonModel getById(@RequestBody Item item);
+
+    @ApiOperation("根据id查询")
+    @PostMapping("/getById1")
+    public Item getById1(@RequestBody String id);
 }

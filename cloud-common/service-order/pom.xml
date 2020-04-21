@@ -48,6 +48,12 @@
             <artifactId>commons-dbcp2</artifactId>
         </dependency>
 
+        <!-- 引入okhttp RestTemplate的底层 -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.wcd</groupId>
             <artifactId>service-common</artifactId>

@@ -37,14 +37,11 @@ public class OrderServiceImpl implements OrderService {
             }
         }
 
-        return orderDao.getById(id);
+        return order;
     }
 
     private Item queryItemById(String id) {
 
-        Item item = new Item();
-        item.setId(id);
-
-        return this.restTemplate.postForObject("http://127.0.0.1:8090/item/getById",item,Item.class);
+        return this.restTemplate.postForObject("http://service-item/item/getById1",id, Item.class);
     }
 }

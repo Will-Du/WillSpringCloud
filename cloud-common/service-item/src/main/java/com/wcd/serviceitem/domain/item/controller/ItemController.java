@@ -35,4 +35,10 @@ public class ItemController implements ItemApi {
 
         return jsonModel;
     }
+
+    @Override
+    public Item getById1(String id) {
+
+        return itemService.getById(id);
+    }
 }
