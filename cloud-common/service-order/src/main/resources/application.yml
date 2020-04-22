@@ -36,3 +36,16 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+

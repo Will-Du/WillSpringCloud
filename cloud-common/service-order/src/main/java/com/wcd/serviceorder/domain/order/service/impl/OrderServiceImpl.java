@@ -4,6 +4,7 @@ import com.wcd.serviceorder.domain.order.dao.OrderDao;
 import com.wcd.serviceorder.domain.order.entity.Item;
 import com.wcd.serviceorder.domain.order.entity.Order;
 import com.wcd.serviceorder.domain.order.entity.OrderDetail;
+import com.wcd.serviceorder.domain.order.service.FeignItemService;
 import com.wcd.serviceorder.domain.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao;
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private FeignItemService feignItemService;
 
     @Override
     public Order getById(String id) {
@@ -30,7 +33,8 @@ public class OrderServiceImpl implements OrderService {
 
         if(!CollectionUtils.isEmpty(order.getOrderDetails())) {
             for (OrderDetail detail: order.getOrderDetails()) {
-                Item item = queryItemById(detail.getItemId());
+//                Item item = queryItemById(detail.getItemId());
+                Item item = feignItemService.getItemById(detail.getItemId());
                 if(item != null) {
                     detail.setItem(item);
                 }
