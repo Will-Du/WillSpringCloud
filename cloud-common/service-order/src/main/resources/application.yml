@@ -48,4 +48,3 @@ feign:
     enabled: false
   okhttp:
     enabled: true
-
