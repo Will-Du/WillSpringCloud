@@ -48,3 +48,5 @@ feign:
     enabled: false
   okhttp:
     enabled: true
+  hystrix:
+    enabled: true
