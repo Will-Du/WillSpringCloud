@@ -8,6 +8,7 @@ import com.wcd.serviceorder.domain.order.entity.OrderDetail;
 import com.wcd.serviceorder.domain.order.service.FeignItemService;
 import com.wcd.serviceorder.domain.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
@@ -34,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
 
         if(!CollectionUtils.isEmpty(order.getOrderDetails())) {
             for (OrderDetail detail: order.getOrderDetails()) {
-                Item item = queryItemById(detail.getItemId());
-//                Item item = queryItemById2(detail.getItemId());
+//                Item item = queryItemById(detail.getItemId());
+                Item item = queryItemById2(detail.getItemId());
                 if(item != null) {
                     detail.setItem(item);
                 }
@@ -60,8 +61,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Item queryItemById2FallbackMethod(String id) {
-        Item item = new Item();
         System.err.println("====");
-        return item;
+        return new Item();
     }
 }

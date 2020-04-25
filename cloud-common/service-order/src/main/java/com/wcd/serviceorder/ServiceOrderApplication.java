@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableFeignClients
 @EnableHystrix
-@EnableCircuitBreaker
 public class ServiceOrderApplication {
 
     public static void main(String[] args) {
