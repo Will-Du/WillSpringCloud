@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @description: TODO
+ * @description: 通过feign调用item服务
  * @author: Will
  * @date: 2020/4/22 21:45
  */
