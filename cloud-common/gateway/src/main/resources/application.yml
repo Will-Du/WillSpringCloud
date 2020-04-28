@@ -18,12 +18,16 @@ spring:
           uri: lb://service-demo
           predicates:
 #            端口号后面的根路径名字，加上/**，可以请求到根路径下的所有api
-            - Path=/service-demo
+            - Path=/service-demo/
 #          filters:
 #            设置为0，是不过滤根路径，如果想过滤掉的话，直接设置为1即可
 #            - StripPrefix=0
 #             这里指的是，当前网关服务对应的过滤器是 LoginGatewayFilterFactory
 #            - Login=true
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/service-order
 
 erueka:
   client:
