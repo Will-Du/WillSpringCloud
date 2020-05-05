@@ -28,8 +28,22 @@ spring:
           uri: lb://service-order
           predicates:
             - Path=/service-order
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackServiceOrder
+                fallbackUri: forward:/fallback/fallbackServiceOrder
 
 erueka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/erueka/
+
+hystrix:
+  command:
+    fallbackServiceOrder:
+      execution:
+        isolation:
+          thread:
+            # 全局熔断器5s超时
+            timeoutInMilliseconds: 5000

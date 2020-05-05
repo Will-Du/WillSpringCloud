@@ -8,7 +8,6 @@ import com.wcd.serviceorder.domain.order.entity.OrderDetail;
 import com.wcd.serviceorder.domain.order.service.FeignItemService;
 import com.wcd.serviceorder.domain.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
