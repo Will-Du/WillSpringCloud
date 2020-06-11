@@ -29,6 +29,7 @@ public class UserRoleController implements UserRoleApi {
 
         JsonModel json = new JsonModel();
         PageModel<UserRoleEntity> page = userRoleService.findByPage(queryDto);
+        System.err.println("测试");
         json.setData(page);
         return json;
     }
